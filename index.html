@@ -3,129 +3,1280 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Go-Vibe | Modern AI-Powered Development</title>
-    <meta name="description" content="Go-Vibe - Leveraging AI and LLMs to revolutionize coding practices and development workflows.">
+    <title>go-vibe | The Modern Development Methodology</title>
+    <meta name="description" content="go-vibe - A structured methodology for maximizing ROI from AI-assisted development and vibe coding practices.">
     <link rel="stylesheet" href="src/css/main.css">
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Mermaid.js -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
     <style>
+        :root {
+            --primary-color: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary-color: #10b981;
+            --danger-color: #ef4444;
+            --warning-color: #f59e0b;
+            --dark-bg: #1e293b;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --gray-900: #0f172a;
+            --code-bg: #1e293b;
+            --radius-sm: 0.25rem;
+            --radius-md: 0.375rem;
+            --radius-lg: 0.5rem;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --transition-base: all 0.2s ease-in-out;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-800);
+            background-color: var(--gray-50);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        /* Header and Navigation */
+        header {
+            background-color: #fff;
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            color: var(--gray-900);
+            letter-spacing: -0.025em;
+        }
+        
+        .logo h1 .code-accent {
+            color: var(--primary-dark);
+            font-weight: 700;
+        }
+        
+        .code-accent {
+            color: var(--primary-color);
+            font-family: 'Fira Code', monospace;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray-700);
+            font-weight: 500;
+            transition: var(--transition-base);
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-md);
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+            background-color: rgba(99, 102, 241, 0.05);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 6rem 0 2rem;
+            background-color: #fff;
+            background-image: 
+                radial-gradient(#6366f130 1px, transparent 1px),
+                linear-gradient(to right, #6366f120 1px, transparent 1px),
+                linear-gradient(to bottom, #6366f120 1px, transparent 1px);
+            background-size: 20px 20px, 40px 40px, 40px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(99, 102, 241, 0.15) 100%);
+            z-index: 1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+            z-index: 1;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero .code-pattern {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+            color: rgba(99, 102, 241, 0.1);
+            pointer-events: none;
+            z-index: 1;
+            padding: 2rem;
+            white-space: pre;
+            overflow: hidden;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.025em;
+            line-height: 1.2;
+            color: var(--gray-900);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--gray-800);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        .hero .ai-accent {
+            color: var(--primary-color);
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero .ai-accent::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-color);
+            opacity: 0.3;
+        }
+
+        .hero .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-md);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-base);
+            font-size: 1rem;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .hero .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        .hero-graphics {
+            font-family: 'Fira Code', monospace;
+            background-color: var(--code-bg);
+            color: #fff;
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            overflow-x: auto;
+            white-space: pre;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+        }
+        
+        /* Problem Statement Box */
+        .problem-box {
+            margin-top: 3rem;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.05) 0%, rgba(239, 68, 68, 0.1) 100%);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition-base);
+        }
+        
+        .problem-box:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .problem-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--danger-color), rgba(239, 68, 68, 0.5));
+        }
+        
+        .problem-box h3 {
+            color: var(--danger-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.75rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            letter-spacing: -0.025em;
+        }
+        
+        .problem-box h3 i {
+            font-size: 1.5rem;
+            background: rgba(239, 68, 68, 0.1);
+            padding: 0.75rem;
+            border-radius: var(--radius-md);
+        }
+        
+        .problem-box p {
+            font-size: 1.25rem;
+            line-height: 1.7;
+            margin-bottom: 0;
+            color: var(--gray-800);
+            position: relative;
+            padding-left: 1rem;
+        }
+        
+        .problem-box strong {
+            color: var(--danger-color);
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .problem-box strong::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--danger-color);
+            opacity: 0.3;
+        }
+        
+        /* Why Methodology Section */
+        .why-methodology {
+            padding: 6rem 0 5rem;
+            background-color: var(--gray-100);
+            position: relative;
+        }
+
+        .why-methodology::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, var(--gray-100));
+            z-index: 1;
+        }
+
+        .why-methodology .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .why-methodology h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin: 0 0 2rem 0;
+            letter-spacing: -0.025em;
+            text-align: center;
+            line-height: 1.1;
+            padding: 0;
+            height: auto;
+            overflow: visible;
+        }
+        
+        .why-methodology p {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            text-align: center;
+            font-size: 1.125rem;
+            color: var(--gray-700);
+        }
+        
+        .benefits-challenges {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .challenge-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-base);
+            border-left: 4px solid var(--danger-color);
+        }
+        
+        .challenge-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .challenge-card h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.025em;
+            line-height: 1.3;
+            color: var(--danger-color);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .challenge-card h3 i {
+            font-size: 1.25rem;
+            padding: 0.75rem;
+            background-color: rgba(239, 68, 68, 0.1);
+            border-radius: var(--radius-md);
+        }
+        
+        .feature-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        
+        .feature-list li {
+            margin-bottom: 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            background-color: var(--gray-50);
+            transition: var(--transition-base);
+            border: 1px solid var(--gray-200);
+        }
+        
+        .feature-list li:hover {
+            background-color: rgba(239, 68, 68, 0.05);
+            border-color: rgba(239, 68, 68, 0.2);
+            transform: translateX(5px);
+        }
+        
+        .feature-list li i {
+            font-size: 1.25rem;
+            padding: 0.75rem;
+            background-color: rgba(239, 68, 68, 0.1);
+            color: var(--danger-color);
+            border-radius: var(--radius-md);
+            flex-shrink: 0;
+        }
+        
+        .feature-list li span {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            color: var(--gray-800);
+            font-weight: 500;
+        }
+        
+        .need-box {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-base);
+        }
+        
+        .need-box:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .need-box h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.025em;
+            line-height: 1.3;
+        }
+        
+        .check-list {
+            list-style: none;
+        }
+        
+        .check-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.5rem;
+            border-radius: var(--radius-md);
+            transition: var(--transition-base);
+        }
+        
+        .check-list li:hover {
+            background-color: var(--gray-50);
+        }
+        
+        .check-list li i {
+            color: var(--primary-color);
+            margin-top: 0.25rem;
+            font-size: 1.25rem;
+            padding: 0.5rem;
+            border-radius: var(--radius-md);
+            background-color: rgba(99, 102, 241, 0.1);
+        }
+        
+        /* Methodology Section */
+        .methodology {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .methodology h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin: 0 0 2rem 0;
+            letter-spacing: -0.025em;
+            text-align: center;
+            line-height: 1.1;
+            padding: 0;
+            height: auto;
+            overflow: visible;
+        }
+        
+        .methodology p {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            text-align: center;
+            font-size: 1.125rem;
+            color: var(--gray-700);
+        }
+        
+        .feature-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            text-align: center;
+            max-width: 280px;
+            padding: 2rem;
+            background-color: var(--gray-100);
+            border-radius: var(--radius-lg);
+            transition: transform 0.2s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-card i {
+            display: inline-block;
+            padding: 1rem;
+            background-color: rgba(99, 102, 241, 0.1);
+            color: var(--primary-color);
+            border-radius: 50%;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        
+        /* Principles Section */
+        .principles {
+            background-color: var(--gray-100);
+            padding: 0.5rem 0;
+        }
+        
+        .principles h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin: 0 0 1rem 0;
+            letter-spacing: -0.025em;
+            text-align: center;
+            line-height: 1.1;
+            padding: 0;
+            height: auto;
+            overflow: visible;
+        }
+
+        .principles p {
+            max-width: 800px;
+            margin: 1rem auto 4rem;
+            text-align: center;
+            font-size: 1.125rem;
+            color: var(--gray-700);
+        }
+
+        .principles-list {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            list-style: none;
+        }
+
+        .principles-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: var(--radius-lg);
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-base);
+        }
+
+        .principles-list li:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .principles-list li i {
+            font-size: 1.5rem;
+            padding: 1rem;
+            background-color: rgba(99, 102, 241, 0.1);
+            color: var(--primary-color);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .principles-list li h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 0.5rem;
+        }
+
+        .principles-list li p {
+            color: var(--gray-700);
+            line-height: 1.6;
+        }
+        
+        .process-flow {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+        
+        .process-flow h3 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+        
+        .process-diagram {
+            margin: 2rem 0;
+            padding: 2rem;
+            background-color: var(--gray-50);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .process-diagram .mermaid {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .process-diagram .mermaid svg {
+            width: 100%;
+            height: auto;
+        }
+        
+        .markdown-viewer {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: var(--gray-800);
+            white-space: pre-wrap;
+            overflow-x: auto;
+            padding: 1rem;
+            background-color: white;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--gray-200);
+        }
+        
+        .markdown-viewer code {
+            display: block;
+            padding: 1rem;
+            background-color: var(--gray-100);
+            border-radius: var(--radius-sm);
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            overflow-x: auto;
+        }
+        
+        .flow-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .flow-step {
+            background-color: var(--gray-100);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            position: relative;
+        }
+        
+        .flow-step h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .flow-step h4 span {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            font-size: 0.875rem;
+        }
+        
+        /* Paradigm Banner Section */
+        .paradigm-banner {
+            background: linear-gradient(135deg, var(--gray-900) 0%, var(--gray-800) 100%);
+            color: white;
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .paradigm-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(99, 102, 241, 0.1) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .paradigm-banner .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .paradigm-banner h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            letter-spacing: -0.025em;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.9) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+
+        .paradigm-banner p {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            color: var(--gray-200);
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .paradigm-banner .highlight {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        /* Resources Section */
+        .resources {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .resources h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin: 0 0 2rem 0;
+            letter-spacing: -0.025em;
+            text-align: center;
+            line-height: 1.1;
+            padding: 0;
+            height: auto;
+            overflow: visible;
+        }
+        
+        .resources-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .resources-content p {
+            margin-bottom: 3rem;
+            font-size: 1.125rem;
+            color: var(--gray-700);
+        }
+        
+        .contribution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .contribution-card {
+            background-color: var(--gray-100);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            text-align: left;
+            transition: var(--transition-base);
+            border: 1px solid var(--gray-200);
+        }
+        
+        .contribution-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+        
+        .contribution-card i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            background-color: rgba(99, 102, 241, 0.1);
+            padding: 1rem;
+            border-radius: var(--radius-md);
+        }
+        
+        .contribution-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--gray-900);
+        }
+        
+        .contribution-card p {
+            font-size: 1rem;
+            color: var(--gray-700);
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        
+        .contribution-card .action-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition-base);
+        }
+        
+        .contribution-card .action-link:hover {
+            color: var(--primary-dark);
+            gap: 0.75rem;
+        }
+        
+        .contribution-card .action-link i {
+            font-size: 1rem;
+            padding: 0;
+            background: none;
+            margin: 0;
+        }
+        
+        .community-cta {
+            background-color: var(--gray-100);
+            padding: 2.5rem;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            margin-top: 3rem;
+            border: 2px dashed var(--primary-color);
+        }
+        
+        .community-cta h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--gray-900);
+        }
+        
+        .community-cta p {
+            margin-bottom: 1.5rem;
+            color: var(--gray-700);
+        }
+        
+        .github-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background-color: var(--gray-900);
+            color: white;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-md);
+            font-weight: 500;
+            transition: var(--transition-base);
+        }
+        
+        .github-button:hover {
+            background-color: var(--gray-800);
+            transform: translateY(-1px);
+        }
+        
+        .github-button i {
+            font-size: 1.25rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--gray-900);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        footer p {
+            color: var(--gray-200);
+            font-size: 0.875rem;
+        }
+        
+        footer .logo {
+            margin-bottom: 1rem;
+        }
+        
+        footer .logo p {
+            display: flex;
+            align-items: center;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: white;
+            font-weight: 600;
+        }
+        
+        footer .logo .code-accent {
+            color: #a5b4fc;
+            font-weight: 700;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .social-links a {
+            color: var(--gray-200);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.2s;
+            padding: 0.5rem;
+            border-radius: var(--radius-md);
+        }
+        
+        .social-links a:hover {
+            color: var(--primary-color);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            footer {
+                padding: 3rem 0 1.5rem;
+            }
+
+            footer .container {
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: left;
+                gap: 1.5rem;
+            }
+
+            footer .logo {
+                margin-bottom: 0;
+            }
+
+            footer .logo p {
+                justify-content: flex-start;
+            }
+
+            .social-links {
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                gap: 1rem;
+            }
+
+            .social-links a {
+                padding: 0.75rem 1rem;
+                background-color: rgba(255, 255, 255, 0.05);
+                border-radius: var(--radius-md);
+                transition: all 0.2s ease;
+            }
+
+            .social-links a:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+                transform: translateY(-1px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            footer {
+                padding: 2rem 0 1rem;
+            }
+
+            footer .logo p {
+                font-size: 1.1rem;
+            }
+
+            footer p {
+                font-size: 0.8rem;
+            }
+
+            .social-links {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+
+            .social-links a {
+                width: 100%;
+                justify-content: flex-start;
+                padding: 0.75rem;
+            }
+        }
+
+        /* Add smooth scrolling for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Add touch-friendly tap targets */
+        @media (hover: none) {
+            .nav-links a,
+            .cta-button,
+            .github-button {
+                padding: 0.75rem 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <nav>
-            <div class="logo">
-                <h1><span class="code-accent">&lt;</span> Go-Vibe <span class="code-accent">/&gt;</span></h1>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <h1><span class="code-accent">&lt;</span> go-vibe <span class="code-accent">/&gt;</span></h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#why-methodology">Why go-vibe</a></li>
+                    <li><a href="#principles">Principles</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <main>
         <section id="home" class="hero">
+            <div class="code-pattern">
+function goVibe() {
+    const docs = "Documentation First";
+    const context = "Context-Aware Generation";
+    const validation = "Validation & Feedback";
+    
+    return {
+        methodology: [docs, context, validation],
+        principles: {
+            docsFirst: true,
+            contextAware: true,
+            continuousEvolution: true
+        }
+    };
+}</div>
             <div class="container">
-                <h1>Go-Vibe</h1>
-                <p>Coding with the power of <span class="ai-accent">AI and LLMs</span></p>
-                <button class="cta-button">Get Started <i class="fas fa-arrow-right"></i></button>
+                <h1>go-vibe</h1>
+                <p>The structured methodology for <span class="ai-accent">AI-powered development</span></p>
+                <button class="cta-button">Learn the Process <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </section>
+
+        <section id="why-methodology" class="why-methodology">
+            <div class="container">
+                <h2>Why a Methodology?</h2>
+                <p>New Generation AI coding tools often generate inconsistent code that violates architectural integrity, leading to technical debt, maintenance nightmares, and security vulnerabilities. This creates a critical gap between the promise of AI-assisted development and the reality of maintaining production-quality code.</p>
+                <div class="benefits-challenges">
+                    <div class="challenge-card">
+                        <ul class="feature-list">
+                            <li>
+                                <i class="fas fa-robot"></i>
+                                <span>AI hallucinations leading to incorrect or inconsistent code</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-memory"></i>
+                                <span>Limited context window size affecting large codebase understanding</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-random"></i>
+                                <span>Inconsistent code quality across different AI models</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-puzzle-piece"></i>
+                                <span>Architectural inconsistencies in generated code</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="principles" class="principles">
+
+            <div class="container">
+                <h2>Core Principles</h2>
+                <p>go-vibe is a structured development methodology designed to maximize the ROI of AI-assisted development and vibe coding practices. Just as TDD revolutionized test-first development and Scrum transformed agile workflows, go-vibe provides a systematic approach to leveraging AI and Large Language Models in software development.</p>
+                <br/>
+                <ul class="principles-list">
+                    <li>
+                        <i class="fas fa-file-alt"></i>
+                        <div>
+                            <h3>Docs at Centre Stage</h3>
+                            <p>Keeping all feature, design and architecture documentation in markdown format alongside code ensures accessibility to both humans and AI tools.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-project-diagram"></i>
+                        <div>
+                            <h3>Context-Aware Code Generation</h3>
+                            <p>Using documentation as context in prompts helps maintain architectural consistency and design constraints when generating or modifying code.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-sync-alt"></i>
+                        <div>
+                            <h3>Doc Creation and Evolution</h3>
+                            <p>Creating and updating documentation based on code evolution creates a feedback loop that keeps documentation current, using AI to assist in this process.</p>
+                        </div>
+                    </li>
+                </ul>
                 
-                <div class="hero-graphics" style="margin-top: 50px; font-size: 1.2rem;">
-                    <span style="color: #a2b372;">&lt;ai&gt;</span>
-                    <span style="color: #c49fd5;">transform</span>
-                    <span style="color: #bf5151;">(</span>
-                    <span style="color: #bc8e58;">yourCode</span>
-                    <span style="color: #bf5151;">)</span>
-                    <span style="color: #a2b372;">&lt;/ai&gt;</span>
+                <div class="process-flow">
+                    <h2>The go-vibe Process Flow</h2>
+                    <div class="process-diagram">
+                        <div class="mermaid">
+
+                            %%{init: { 
+                                'theme': 'base',
+                                'themeVariables': {
+                                    'primaryColor': '#4f46e5',
+                                    'primaryTextColor': '#fff',
+                                    'primaryBorderColor': '#4338ca',
+                                    'lineColor': '#4f46e5',
+                                    'secondaryColor': '#e2e8f0',
+                                    'tertiaryColor': '#cbd5e1',
+                                    'edgeLabelBackground': '#cbd5e1',
+                                    'labelTextColor': '#1e293b'
+                                }
+                            }}%%
+                            graph LR
+                                subgraph "1 - IDE Rules"
+                                    subgraph "_"
+                                        direction LR
+                                        subgraph Docs_in_Markdown["Docs in Markdown"]
+                                            D["Developer Docs"]
+                                        end
+                                
+                                        subgraph Code_Section["Code"]
+                                            C["Code<br/>Artefacts"]
+                                        end
+                                    end
+                                end
+                            
+                                D -. "Prompts<br/>3 - Code Gen" .-> C
+                                C -. "Prompts<br/>2 - Doc Gen <br>4 - Doc Evolve" .-> D
+                            
+                                style D fill:#6366f1,stroke:#4f46e5,stroke-width:2px,color:#fff
+                                style C fill:#6366f1,stroke:#4f46e5,stroke-width:2px,color:#fff
+                                style Docs_in_Markdown fill:#f1f5f9,stroke:#334155,stroke-width:1px
+                                style Code_Section fill:#f1f5f9,stroke:#334155,stroke-width:1px
+                                linkStyle 0,1 stroke:#6366f1,stroke-width:2px
+                            
+                        </div>
+                    </div>
+                    <div class="flow-steps">
+                        <div class="flow-step">
+                            <h4><span>1</span> Setup IDE Rules</h4>
+                            <p>Start by setting up the IDE rules for the project. This is a set of rules that will be used to generate the code.</p>
+                        </div>
+                        <div class="flow-step">
+                            <h4><span>2</span> Document Generation</h4>
+                            <p>Start by creating or updating documentation that clearly defines architectural patterns, design constraints, and feature requirements.</p>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="flow-steps">
+                        <div class="flow-step">
+                            <h4><span>3</span> Context Aware Code Generation</h4>
+                            <p>Include relevant documentation as context when crafting prompts for AI code generation, ensuring alignment with established patterns.</p>
+                        </div>
+                        <div class="flow-step">
+                            <h4><span>4</span> Document Evolution</h4>
+                            <p>Validate AI-generated code against documentation, then update docs to reflect any approved changes, maintaining the documentation-code harmony.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="about" class="about">
+        <section class="paradigm-banner">
             <div class="container">
-                <h2>About Vibe Coding</h2>
-                <p>At <strong>Go-Vibe</strong>, we're revolutionizing software development through the power of AI and Large Language Models. Vibe Coding is our approach to modern development that leverages cutting-edge AI technologies to enhance productivity, creativity, and code quality. We help businesses transform their development processes by utilizing intelligent assistants that understand context, generate solutions, and accelerate innovation.</p>
-                
-                <div style="display: flex; justify-content: center; flex-wrap: wrap; margin-top: 3rem; gap: 2rem;">
-                    <div style="text-align: center; max-width: 200px;">
-                        <i class="fas fa-bolt" style="font-size: 2.5rem; color: #c49fd5; margin-bottom: 1rem;"></i>
-                        <h3 style="margin-bottom: 0.5rem;">Rapid Development</h3>
-                        <p style="font-size: 0.9rem;">10x faster development cycles with AI assistance</p>
-                    </div>
-                    <div style="text-align: center; max-width: 200px;">
-                        <i class="fas fa-brain" style="font-size: 2.5rem; color: #a2b372; margin-bottom: 1rem;"></i>
-                        <h3 style="margin-bottom: 0.5rem;">Intelligent Solutions</h3>
-                        <p style="font-size: 0.9rem;">Complex problems solved with LLM-powered insights</p>
-                    </div>
-                    <div style="text-align: center; max-width: 200px;">
-                        <i class="fas fa-code" style="font-size: 2.5rem; color: #bf5151; margin-bottom: 1rem;"></i>
-                        <h3 style="margin-bottom: 0.5rem;">Clean Code</h3>
-                        <p style="font-size: 0.9rem;">Higher quality code with AI-powered best practices</p>
-                    </div>
-                </div>
+                <h2>A paradigm shift in how developers work</h2>
+                <p>PDD integrates AI coding IDEs (like Cursor) into the software development lifecycle, creating a seamless workflow where <span class="highlight">documentation</span>, <span class="highlight">architecture</span>, and <span class="highlight">implementation</span> evolve together at a rapid phase.</p>
             </div>
         </section>
 
-        <section id="services" class="services">
+        <section id="resources" class="resources">
             <div class="container">
-                <h2>Our Services</h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <i class="fas fa-robot" style="font-size: 2rem; color: #c49fd5; margin-bottom: 1rem;"></i>
-                        <h3>AI Development Consulting</h3>
-                        <p>Transform your development workflow with our AI integration consulting. We help teams adopt and maximize the benefits of LLM-assisted coding through customized training, workflow optimization, and tool integration.</p>
+                <h2>Join the Community</h2>
+                <div class="resources-content">
+                    <p>go-vibe is an open-source methodology that thrives on community contributions. Help shape the future of AI-assisted development by sharing your experiences, suggesting improvements, and contributing to the methodology.</p>
+                    
+                    <div class="contribution-grid">
+                        <div class="contribution-card">
+                            <i class="fas fa-code-branch"></i>
+                            <h3>Contribute to the Code</h3>
+                            <p>Help improve the methodology by contributing code examples, templates, and tools that demonstrate go-vibe principles in action.</p>
+                            <a href="#" class="action-link">
+                                View Guidelines <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="contribution-card">
+                            <i class="fas fa-book"></i>
+                            <h3>Share Documentation</h3>
+                            <p>Contribute to the documentation by sharing your implementation experiences, best practices, and lessons learned.</p>
+                            <a href="#" class="action-link">
+                                Read More <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="contribution-card">
+                            <i class="fas fa-comments"></i>
+                            <h3>Join Discussions</h3>
+                            <p>Participate in community discussions to share ideas, ask questions, and help others implement go-vibe effectively.</p>
+                            <a href="#" class="action-link">
+                                Get Started <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
-                    <div class="service-card">
-                        <i class="fas fa-code-branch" style="font-size: 2rem; color: #a2b372; margin-bottom: 1rem;"></i>
-                        <h3>AI-Powered Code Refactoring</h3>
-                        <p>Enhance your existing codebase with our AI-powered refactoring service. We leverage advanced language models to analyze, improve, and optimize your code for better performance, readability and maintainability.</p>
-                    </div>
-                    <div class="service-card">
-                        <i class="fas fa-graduation-cap" style="font-size: 2rem; color: #bf5151; margin-bottom: 1rem;"></i>
-                        <h3>Vibe Coding Training</h3>
-                        <p>Empower your development team with our specialized Vibe Coding workshops and training programs. Learn how to effectively prompt, collaborate with, and enhance your capabilities using AI coding assistants.</p>
+                    
+                    <div class="community-cta">
+                        <h3>Ready to Contribute?</h3>
+                        <p>Start by exploring our GitHub repository and following our contribution guidelines.</p>
+                        <a href="https://github.com/99x-Internal/go-vibe.dev" class="github-button" target="_blank">
+                            <i class="fab fa-github"></i> Visit GitHub Repository
+                        </a>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <section id="contact" class="contact">
-            <div class="container">
-                <h2>Get in Touch</h2>
-                <form>
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="service">Service of Interest</label>
-                        <select id="service" name="service" style="width: 100%; padding: 1rem; border: 2px solid #eee; border-radius: 8px; font-size: 1rem;">
-                            <option value="">Select a service...</option>
-                            <option value="consulting">AI Development Consulting</option>
-                            <option value="refactoring">AI-Powered Code Refactoring</option>
-                            <option value="training">Vibe Coding Training</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" placeholder="Tell us about your project or inquiry..." required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Send Message <i class="fas fa-paper-plane"></i></button>
-                </form>
             </div>
         </section>
     </main>
@@ -133,8 +1284,10 @@
     <footer>
         <div class="container">
             <div>
-                <p style="margin-bottom: 0.5rem;"><span class="code-accent">&lt;</span> Go-Vibe <span class="code-accent">/&gt;</span></p>
-                <p>&copy; 2025 Go-Vibe. All rights reserved.</p>
+                <div class="logo">
+                    <p><span class="code-accent">&lt;</span> go-vibe <span class="code-accent">/&gt;</span></p>
+                </div>
+                <p>&copy; 2025 99x & go-vibe. All rights reserved.</p>
             </div>
             <div class="social-links">
                 <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i> LinkedIn</a>
@@ -144,6 +1297,19 @@
         </div>
     </footer>
 
+    <script>
+        // Initialize Mermaid
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            securityLevel: 'loose',
+            flowchart: {
+                curve: 'basis',
+                padding: 20,
+                htmlLabels: true
+            }
+        });
+    </script>
     <script src="src/js/main.js"></script>
 </body>
 </html>

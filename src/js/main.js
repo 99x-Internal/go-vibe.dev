@@ -140,79 +140,40 @@ document.addEventListener('DOMContentLoaded', () => {
         return re.test(String(email).toLowerCase());
     }
     
-    // Mobile menu toggle functionality for responsive design
+    // Mobile menu functionality
     const createMobileMenu = () => {
-        const header = document.querySelector('header');
+        const nav = document.querySelector('nav');
         
         // Create mobile menu button
         const mobileMenuBtn = document.createElement('button');
         mobileMenuBtn.className = 'mobile-menu-btn';
         mobileMenuBtn.setAttribute('aria-label', 'Toggle menu');
         mobileMenuBtn.innerHTML = '<span></span><span></span><span></span>';
-        mobileMenuBtn.style.display = 'none';
         
         // Add mobile menu button to the header
-        const nav = document.querySelector('nav');
         nav.appendChild(mobileMenuBtn);
-        
-        // Add styles for mobile view
-        const style = document.createElement('style');
-        style.textContent = `
-            @media (max-width: 768px) {
-                .mobile-menu-btn {
-                    display: block !important;
-                    background: none;
-                    border: none;
-                    cursor: pointer;
-                    padding: 5px;
-                }
-                
-                .mobile-menu-btn span {
-                    display: block;
-                    width: 25px;
-                    height: 3px;
-                    background-color: white;
-                    margin: 5px 0;
-                    transition: 0.3s;
-                }
-                
-                .nav-links {
-                    display: none;
-                    position: absolute;
-                    top: 100%;
-                    left: 0;
-                    width: 100%;
-                    background-color: #2c3e50;
-                    flex-direction: column;
-                    padding: 1rem 0;
-                }
-                
-                .nav-links.show {
-                    display: flex !important;
-                }
-                
-                .nav-links li {
-                    margin: 0.5rem 0;
-                    text-align: center;
-                }
-                
-                .nav-links a {
-                    display: block;
-                    padding: 0.5rem;
-                }
-            }
-        `;
-        document.head.appendChild(style);
         
         // Toggle mobile menu
         mobileMenuBtn.addEventListener('click', () => {
             const navLinks = document.querySelector('.nav-links');
+            mobileMenuBtn.classList.toggle('active');
             navLinks.classList.toggle('show');
-            
-            // Animate burger icon
-            const spans = mobileMenuBtn.querySelectorAll('span');
-            spans.forEach(span => {
-                span.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenuBtn.contains(e.target) && !navLinks.contains(e.target)) {
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('show');
+            }
+        });
+
+        // Close mobile menu when clicking a link
+        const navLinksItems = document.querySelectorAll('.nav-links a');
+        navLinksItems.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('show');
             });
         });
     };
