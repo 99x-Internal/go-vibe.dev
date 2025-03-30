@@ -272,13 +272,13 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Random styling
             particle.style.position = 'absolute';
-            particle.style.color = `rgba(255, 255, 255, ${Math.random() * 0.2 + 0.1})`;
+            particle.style.color = `rgba(79, 70, 229, ${Math.random() * 0.2 + 0.1})`;
             particle.style.fontSize = `${Math.random() * 0.8 + 0.6}rem`;
             particle.style.fontFamily = 'monospace';
             particle.style.left = `${Math.random() * 100}%`;
             particle.style.top = `${Math.random() * 100}%`;
             particle.style.transform = 'rotate(' + (Math.random() * 40 - 20) + 'deg)';
-            particle.style.opacity = '0';
+            particle.style.opacity = '80';
             particle.style.animation = `fadeIn ${Math.random() * 2 + 2}s ease-out ${Math.random() * 3}s forwards`;
             
             particlesContainer.appendChild(particle);
