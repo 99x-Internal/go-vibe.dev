@@ -22,10 +22,8 @@ AI-powered code generation tools like Cursor can significantly enhance developer
 
 - **Commit code often**: Make frequent commits after successful AI-generated code additions. This enables easy rollback if needed.
 - **Clean prompt threads**: Regularly start new threads to limit context bloat, which can degrade AI performance over time.
-- **Use branches strategically**:
+- **Use branches**:
   - Create separate branches for different areas of AI prompting to avoid mixing concerns
   - Use multiple branches to work with multiple AI instances simultaneously on different parts of your codebase
   - Merge branches only after thorough review and testing
-- **Verify and test**: Always review, verify, and test AI-generated code before committing.
-- **Learn from AI suggestions**: Use AI as a learning tool by understanding the patterns and solutions it provides.
 - **Document reusable prompts**: Keep a record of effective prompts for reuse in similar situations.

@@ -14,6 +14,10 @@ Most modern IDEs allow you to define your own custom rules. These rules can be u
 
 Cursor IDE rules are a way to customize the behavior of the Cursor IDE. They are defined in  `.mdc` files inside the `.cursor/rules` folder on the root of the repository.
 
+![Cursor IDE Rules](./images/new-ide-rule.png)
+
+Above image shows the new IDE rule addition in Cursor.
+
 ## Cursor IDE Example Rules File
 
 E.g., `.cursor/rules/coding-patterns.mdc`:
