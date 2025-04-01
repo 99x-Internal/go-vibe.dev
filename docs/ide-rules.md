@@ -10,6 +10,8 @@ Most modern IDEs allow you to define your own custom rules. These rules can be u
 
 **IDE rules:** Code generation rules are best kept in the IDE rules file as shown below. However the design and architecture of the code should be documented in the markdown docs instead of using the IDE rules files.
 
+In case of a mono repo or if different parts of the project structure requires different instructions (e.g., certain modules have type checking while others don't), include such instructions in the relevant markdown docs instead of IDE rules.
+
 ## Cursor IDE Rules
 
 Cursor IDE rules are a way to customize the behavior of the Cursor IDE. They are defined in  `.mdc` files inside the `.cursor/rules` folder on the root of the repository.

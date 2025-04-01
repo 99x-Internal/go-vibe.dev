@@ -46,3 +46,7 @@ docs/
 ```
 
 **overview.md**: This is an index of all relevant documentation. Having this file make it easier to pass all documentation to the AI tools to generate code.
+
+Markdown docs can be organized per feature as well as per verticle layers within the feature as per diagram below.
+
+![Markdown docs structure](./images/markdown-structure.png)
