@@ -6,7 +6,7 @@ Most modern IDEs allow you to define your own custom rules. These rules can be u
 
 ## IDE rules vs. docs in repo
 
-**Markdown docs:** Keep all documentation related to the architecture and design of the code in the repository documentation as markdown files. See [docs/doc-creation.md](./docs/doc-creation.md) for more information.
+**Markdown docs:** Keep all documentation related to the architecture and design of the code in the repository documentation as markdown files. See [docs/doc-creation.md](./doc-creation.md) for more information.
 
 **IDE rules:** Code generation rules are best kept in the IDE rules file as shown below. However the design and architecture of the code should be documented in the markdown docs instead of using the IDE rules files.
 
